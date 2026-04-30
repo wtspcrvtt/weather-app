@@ -1,18 +1,26 @@
-import WeatherForm from './components/WeatherForm'
 import { useState } from 'react'
+import WeatherDisplay from './components/WeatherDisplay';
+import WeatherForm from './components/WeatherForm';
 function App() {
   const [city, setCity] = useState('');
+  const [weatherData, setWeatherData] = useState({ name: 'Москва', temp: 20, description: 'Солнечно' });
+  
+  
 
+  function fetchWeather() {
+    console.log(city);
+  }
 
-  function handleCityChange() {
-    (newCity: string) => {
-      setCity(newCity);
-      }
-    }
-    return (
+  return (
+    <>
+      <WeatherForm value={city} onChange={setCity} onSearch={fetchWeather} />
+        
+    
 
-      <WeatherForm onCityChange={handleCityChange} />
-    )
+      <WeatherDisplay data={weatherData} />
+      </>
+      
+  );
   
 }
 
