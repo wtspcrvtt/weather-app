@@ -3,7 +3,7 @@ import WeatherDisplay from './components/WeatherDisplay';
 import WeatherForm from './components/WeatherForm';
 function App() {
   const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState({ name: 'Москва', temp: 20, feels_like: 18, description: 'Солнечно' });
+  const [weatherData, setWeatherData] = useState({ name: 'Москва', temp: 20, feels_like: 18, description: 'Солнечно', condition: 'Солнечно' });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,6 +24,7 @@ function App() {
             temp: data.main.temp,
             feels_like: data.main.feels_like,
             description: data.weather[0].description,
+            condition: data.weather[0].main
           });
         })
         .catch(error => {
@@ -41,7 +42,7 @@ function App() {
         
     
 
-      <WeatherDisplay data={weatherData} isLoading={isLoading} error={error} />
+      <WeatherDisplay data={weatherData} isLoading={isLoading} error={error} condition={weatherData?.condition} />
       </>
       
   );

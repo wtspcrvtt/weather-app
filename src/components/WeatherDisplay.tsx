@@ -2,9 +2,10 @@ interface WeatherDisplayProps {
     data: {name: string; temp: number; description: string, feels_like: number } | null;
     isLoading: boolean;
     error: string | null;
+    condition?: string;
 }
 
-function WeatherDisplay({ data, isLoading, error }: WeatherDisplayProps) {
+function WeatherDisplay({ data, isLoading, error, condition }: WeatherDisplayProps) {
     if (isLoading) {
         return (
             <div>Загрузка...</div>
@@ -21,10 +22,10 @@ function WeatherDisplay({ data, isLoading, error }: WeatherDisplayProps) {
         )
     }
     return (
-        <div>
-            <h1>Погода в {data.name}</h1>
+        <div className={`weather-card ${condition || ''}`}>
+            <h1>Weather in {data.name}</h1>
             <p>{data.temp}°C</p>
-            <p>Ощущается как: {data.feels_like}°C</p>
+            <p>Feels like: {data.feels_like}°C</p>
             <p>{data.description}</p>
         </div>
     )
