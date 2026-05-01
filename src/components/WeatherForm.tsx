@@ -5,11 +5,11 @@ interface WeatherFormProps {
 }
 function WeatherForm({value, onChange, onSearch}: WeatherFormProps) {
     return (
-        <div>
-            <input type="text" placeholder="Введите город..."
+        <div className="inputs">
+            <input className="input" type="text" placeholder="Введите город..."
             value={value}
             onChange={(e) => onChange(e.target.value)} />
-            <button onClick={onSearch}>Узнать погоду</button>
+            <button className="input-btn" onClick={onSearch}>Узнать погоду</button>
         </div>
     )
 }

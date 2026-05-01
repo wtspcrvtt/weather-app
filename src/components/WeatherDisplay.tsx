@@ -8,7 +8,10 @@ interface WeatherDisplayProps {
 function WeatherDisplay({ data, isLoading, error, condition }: WeatherDisplayProps) {
     if (isLoading) {
         return (
-            <div>Загрузка...</div>
+            <div className="loading">
+                <div className="spinner"></div>
+                <p>Загрузка...</p>
+            </div>
         )
     }
     if (error) {
@@ -23,10 +26,10 @@ function WeatherDisplay({ data, isLoading, error, condition }: WeatherDisplayPro
     }
     return (
         <div className={`weather-card ${condition || ''}`}>
-            <h1>Weather in {data.name}</h1>
-            <p>{data.temp}°C</p>
-            <p>Feels like: {data.feels_like}°C</p>
-            <p>{data.description}</p>
+            <h1 className="city-name">Weather in {data.name}</h1>
+            <p className="temp">{data.temp}°C</p>
+            <p className="feels-like">Feels like: {data.feels_like}°C</p>
+            <p className="desc">{data.description}</p>
         </div>
     )
 }

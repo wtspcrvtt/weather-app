@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import WeatherDisplay from './components/WeatherDisplay';
 import WeatherForm from './components/WeatherForm';
+import './App.css';
 function App() {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState({ name: 'Москва', temp: 20, feels_like: 18, description: 'Солнечно', condition: 'Солнечно' });
@@ -38,11 +39,17 @@ function App() {
 
   return (
     <>
+    <div className={`app ${weatherData?.condition || ''}`}>
+
+      <h1 className='title'>Моя погода</h1>
+
       <WeatherForm value={city} onChange={setCity} onSearch={fetchWeather} />
         
     
 
       <WeatherDisplay data={weatherData} isLoading={isLoading} error={error} condition={weatherData?.condition} />
+
+    </div>
       </>
       
   );
