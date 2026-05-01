@@ -4,7 +4,13 @@ import WeatherForm from './components/WeatherForm';
 import './App.css';
 function App() {
   const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState({ name: 'Москва', temp: 20, feels_like: 18, description: 'Солнечно', condition: 'Солнечно' });
+  const [weatherData, setWeatherData] = useState<{
+  name: string;
+  temp: number;
+  feels_like: number;
+  description: string;
+  condition: string;
+} | null>({ name: 'Москва', temp: 20, feels_like: 18, description: 'Солнечно', condition: 'Clear' });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
