@@ -20,9 +20,39 @@ body {
     font-family: "Fira Sans", sans-serif;
     text-align: center;
     font-size: 48px;
+    white-space: nowrap;
+    width: 0;
+    overflow: hidden;
+    border-right: 3px solid #fff;
+    animation: typing 4s steps(15) infinite,
+    blink 0.7s infinite;
     color: white;
     margin-bottom: 24px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+
+    40% {
+        width: 14ch;
+    }
+
+    80% {
+        width: 14ch;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
 }
 
 .app.Clear {
